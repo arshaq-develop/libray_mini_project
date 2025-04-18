@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  .center-container {
+    height: 80vh;
+  }
+
+  .rent-box {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  .rent-box input[type="number"] {
+    max-width: 150px;
+    margin-left: 15px;
+  }
+</style>
+
+<div class="d-flex justify-content-center align-items-center center-container">
+  <form method="post">
+    {% csrf_token %}
+    <div class="rent-box text-center">
+      <h5>How many days do you want to Rent?</h5>
+      <input type="number" name="rental_days" class="form-control mt-3 mx-auto" placeholder="Enter Days" min="1" max="30" required>
+      <input type="submit" class="btn btn-success mt-2">
+    </div>
+  </form>
+</div>
+
+{% endblock %}
+

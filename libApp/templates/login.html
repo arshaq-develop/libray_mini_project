@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+
+    <title>Library Login</title>
+
+    <style>
+      body {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+        background-size: cover;
+        color: #fff;
+      }
+
+      form {
+        backdrop-filter: blur(10px);
+      }
+    </style>
+  </head>
+  <body class="d-flex vw-100 vh-100 align-items-center justify-content-center">
+    {% block content %}
+    <!-- {% for i in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{i}}</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %} -->
+    <div style="max-width: 400px; width: 100%;">
+      <form action="" method="post" class="p-4 border rounded shadow bg-light">
+        {% csrf_token %}
+
+        <h3 class="text-center mb-4 text-dark">Login</h3>
+
+        {% for field in form %}
+          <div class="mb-3">
+            <label class="form-label text-dark">{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+              <div class="text-danger small">{{ field.errors }}</div>
+            {% endif %}
+          </div>
+        {% endfor %}
+
+        <div class="d-grid">
+          <input type="submit" class="btn btn-success" value="Login">
+        </div>
+      </form>
+
+      <div class="mt-3 text-center">
+        <p class="mb-0 text-white">
+          Not a registered user? 
+          <a href="{% url 'register_view' %}" class="text-warning fw-bold text-decoration-none">Register now</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+    {% endblock %}
+  </body>
+</html>

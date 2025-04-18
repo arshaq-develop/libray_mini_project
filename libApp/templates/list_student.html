@@ -1,0 +1,28 @@
+{% extends 'admin_home.html' %}
+
+{% block content %}
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email ID</th>
+            <th>Registered Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in us %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.username}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.date_joined}}</td>
+            <td><a href="{% url 'studentdelete_view' i.id %}" class="btn btn-danger">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
